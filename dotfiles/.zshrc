@@ -108,11 +108,5 @@ export NODE_PATH="/usr/local/lib/node_modules"
 export NVM_DIR="/Users/huangmh/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# AWS_WEST
-alias aws_west="export AWS_ACCESS_KEY_ID='AKIAJVOVDBGR2OUWPYIQ';export AWS_SECRET_ACCESS_KEY='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'"
-
-# AWS_EASH
-alias aws_east="export AWS_ACCESS_KEY_ID='AKIAIQCCIPMMEYHOQHCQ';export AWS_SECRET_ACCESS_KEY='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'"
-
 # babel-node
 alias bn='babel-node'
