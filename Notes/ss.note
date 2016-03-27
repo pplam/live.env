@@ -1,0 +1,29 @@
+## Repos
+
+
+* manager: new dash board
+* ss-swf/dashboard: old dashborad
+
+## How to get config from s3
+
+$ s3cmd get s3://ss-config/newdevelop.json 
+
+## WIFI
+
+sssh : ssshFTW! 
+
+## gulp for comissioner
+
+1. deploy
+  gulp deploy -e dev -a workflow -r manager
+2. lauch a ec2 instance
+  gulp lauch -e dev -a wrokflow -r manage --count=2 [--onDemand=true]
+3. list aplication roles
+  gulp list -e -dev -a workflow
+4. terminate a machine
+  gulp terminate -i <ec2 instance id>
+
+
+
+  # s3
+  s3://ssi-us-west-1-external-data
