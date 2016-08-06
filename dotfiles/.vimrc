@@ -1,126 +1,109 @@
-set nocompatible               " be iMproved
-set encoding=utf8
-"filetype off
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" install vundle:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" colorscheme desert
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'einars/js-beautify'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-rails.git'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
 Plugin 'moll/vim-node'
+Plugin 'fatih/vim-go'
+Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'cespare/vim-toml'
 Plugin 'mxw/vim-jsx'
 Plugin 'mtscout6/vim-cjsx'
+Plugin 'Raimondi/delimitMate'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'metrue/trims'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
+Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rvm'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-rails.git'
-Plugin 'pangloss/vim-javascript'
-Plugin 'vim-scripts/The-NERD-Commenter'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdtree'
-Plugin 'walm/jshint.vim'
-Plugin 'L9'
-Plugin 'slim-template/vim-slim.git'
-Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'vim-scripts/svg.vim'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'wakatime/vim-wakatime'
 Plugin 'JulesWang/css.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'digitaltoad/vim-jade.git'
-
-" 1 tab to 2 space for ruby
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set tw=68
-" number line show 
-set nu
-set foldmethod=indent " 设置语法折叠
-set nofoldenable
-
-" input source improve for gui vim
-if has("gui_running")
-  set noimdisable
-  set imi=2
-  set ims=2
-endif
-
-set noswapfile
-"in order to switch between buffers with unsaved change
-set hidden
-
-" hightlight col and line
-" set cursorline
-"set cursorcolumn
-
-if has("gui_running")
-  colorscheme desert
-  set bs=2
-  set ruler
-  set gfn=Monaco:h16
-  set shell=/bin/bash
-endif
-
-let mapleader= ","
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,eruby EmmetInstall
-
-set completefunc=syntaxcomplete#Complete
-" indent guides
-let g:indent_guides_guide_size = 1
-" indent guides shortcut
-map <silent><F7>  <leader>ig
-map <silent><F8> :NERDTree<CR>
-
-autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-" hack filetype for slim
-autocmd BufNewFile,BufRead *.slim set filetype=slim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-map <c-o> :CtrlPBuffer<CR>
+" compile YouCompleteMe:
+" cd ~/.vim/bundle/YouCompleteMe; ./install.py
 
 call vundle#end()
-" support css word with -
-autocmd FileType css,scss setlocal iskeyword+=-
 
-" vim 7.4 backspace fix
-set backspace=indent,eol,start
-set t_Co=256
-" colorscheme, read here: http://vim.wikia.com/wiki/Change_the_color_scheme
-" colorscheme molokai
-Bundle 'wakatime/vim-wakatime'
-autocmd User Node
-  \ if &filetype == "javascript" |
-  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile |
-  \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
-  \ endif
-
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd FileType perl setlocal ts=2 sts=2 sw=2
-
-".vimrc
-map <c-f> :call JsBeautify()<cr>
-" or
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
-filetype plugin indent on     " required! 
 syntax on
-map <C-n> :NERDTreeToggle<CR>
+filetype on
+filetype plugin indent on     " required
 
-fun! TrimWhitespace()
-  let l:save_cursor = getpos('.')
-  %s/\s\+$//e
-  call setpos('.', l:save_cursor)
-endfun
+" moving cursor between windows
+nmap <C-j> ^Wj
+nmap <C-k> ^Wk
+nmap <C-l> ^Wl
+nmap <C-h> ^Wh
+
+colorscheme monokai
+" uncomment this if you want to use mouse
+set ttymouse=xterm
+set mouse=nv
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set number
+set autoindent
+set smarttab
+set backspace=indent,eol,start
+" set mouse=a
+
+set rtp+=$HOME/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
+" Always show statusline
+set laststatus=2
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+set pastetoggle=<F10>
+
+au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
+
+autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+let g:go_fmt_command = "goimports"
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:NERDTreeMouseMode=3
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+" let g:jsx_ext_required = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+autocmd BufWritePre * :%s/\s\+$//e
+
+" NerdTree
+map <C-n> :NERDTreeToggle<CR>
