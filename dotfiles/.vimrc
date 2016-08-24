@@ -28,7 +28,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'mtscout6/vim-cjsx'
 Plugin 'Raimondi/delimitMate'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
 Plugin 'metrue/trims'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
@@ -39,8 +38,10 @@ Plugin 'vim-scripts/svg.vim'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'JulesWang/css.vim'
-" compile YouCompleteMe:
-" cd ~/.vim/bundle/YouCompleteMe; ./install.py
+Plugin 'vim-scripts/groovy.vim'
+Plugin 'vim-scripts/python.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'jmcantrell/vim-virtualenv'
 
 call vundle#end()
 
@@ -94,6 +95,7 @@ set statusline+=%*
 let g:syntastic_check_on_wq = 1
 " let g:jsx_ext_required = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers = ['pylint']
 
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
